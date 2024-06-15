@@ -34,4 +34,6 @@ jobs:
           publish_dir: ./dist
 
       - name: Run Tests
-        run: npm test
+        run: timeout 500ms npm test
+        env:
+          NODE_ENV: test

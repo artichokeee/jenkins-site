@@ -4,7 +4,6 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
 describe("Website", function () {
-  this.timeout(10000); // Увеличиваем таймаут для всех тестов в этом блоке
   let dom;
 
   before(function (done) {
