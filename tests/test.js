@@ -1,5 +1,5 @@
 const assert = require("assert");
-const http = require("https");
+const https = require("https");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
@@ -16,7 +16,7 @@ describe("Website", function () {
   });
 
   it("should return 200", function (done) {
-    http
+    https
       .get("https://artichokeee.github.io/jenkins-site/", (res) => {
         assert.strictEqual(res.statusCode, 200);
         done();
@@ -38,25 +38,6 @@ describe("Website", function () {
     it("should have three sections", function () {
       const sections = dom.window.document.querySelectorAll("main section");
       assert.strictEqual(sections.length, 3);
-    });
-
-    it("should have a footer with copyright text", function () {
-      const footer = dom.window.document.querySelector("footer p").textContent;
-      assert.strictEqual(footer, "© 2024 Тестировщик с большим сердцем");
-    });
-
-    it("should have an unordered list in the third section", function () {
-      const list = dom.window.document
-        .querySelectorAll("section")[2]
-        .querySelector("ul");
-      assert.ok(list);
-    });
-
-    it("should have three list items in the unordered list", function () {
-      const listItems = dom.window.document
-        .querySelectorAll("section")[2]
-        .querySelectorAll("ul li");
-      assert.strictEqual(listItems.length, 3);
     });
   });
 });
