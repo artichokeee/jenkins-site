@@ -34,9 +34,6 @@ jobs:
           publish_dir: ./dist
 
       - name: Run Tests
-        run: |
-          npm test
-          echo "Tests completed"
-          killall node
+        run: npm test
         env:
           NODE_ENV: test
