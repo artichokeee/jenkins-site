@@ -9,6 +9,7 @@
   "author": "Ваше имя",
   "license": "ISC",
   "devDependencies": {
+    "jsdom": "^24.1.0",
     "mocha": "^8.3.2"
   }
 }
