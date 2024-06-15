@@ -4,7 +4,7 @@
   "description": "A simple website to learn testing",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/test.js",
+    "test": "mocha tests/test.js && exit 0",
     "build": "echo 'Building the website...' && mkdir -p dist && rsync -av --progress --exclude dist --exclude node_modules --exclude tests --exclude package.json --exclude package-lock.json ./ dist/"
   },
   "author": "",
