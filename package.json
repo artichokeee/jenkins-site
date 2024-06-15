@@ -1,0 +1,14 @@
+{
+  "name": "testing-website",
+  "version": "1.0.0",
+  "description": "Одностраничный сайт о тестировании",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests/test.js"
+  },
+  "author": "Ваше имя",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^8.3.2"
+  }
+}
