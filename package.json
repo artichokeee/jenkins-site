@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/test.js",
-    "build": "echo 'Building the website...' && mkdir -p dist && find . -maxdepth 1 -type f -not -path './dist/*' -exec cp {} dist/ \\; && echo '<!DOCTYPE html><html><head><title>Как начать тестирование</title></head><body><h1>Как начать тестирование</h1><ul><li>Изучить основы тестирования</li><li>Практиковаться на реальных проектах</li><li>Изучить инструменты автоматизации</li><li>Подготовиться к сертификации</li></ul></body></html>' > dist/index.html"
+    "build": "echo 'Building the website...' && mkdir -p dist && cp -r * dist/ && rm -rf dist/node_modules dist/tests dist/package.json dist/package-lock.json"
   },
   "author": "",
   "license": "ISC",

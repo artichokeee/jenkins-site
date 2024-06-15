@@ -1,5 +1,5 @@
 const assert = require("assert");
-const http = require("http");
+const http = require("https");
 const { JSDOM } = require("jsdom");
 
 describe("Website", function () {
