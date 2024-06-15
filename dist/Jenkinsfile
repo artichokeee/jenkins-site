@@ -18,12 +18,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'npm run build'
+                sh 'echo "Building the website"'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'cp -r ./dist /Documents/jenkins-deploy'
+                sh 'echo "Deploying the website"'
             }
         }
     }
