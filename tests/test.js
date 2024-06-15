@@ -5,14 +5,23 @@ const { JSDOM } = jsdom;
 
 describe("Website", function () {
   let dom;
+  let server;
 
-  beforeEach(function (done) {
+  before(function (done) {
     JSDOM.fromURL("https://artichokeee.github.io/jenkins-site/")
       .then((domInstance) => {
         dom = domInstance;
         done();
       })
       .catch(done);
+  });
+
+  after(function (done) {
+    if (server) {
+      server.close(done);
+    } else {
+      done();
+    }
   });
 
   it("should return 200", function (done) {
