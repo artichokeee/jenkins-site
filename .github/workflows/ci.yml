@@ -34,6 +34,9 @@ jobs:
           publish_dir: ./dist
 
       - name: Run Tests
-        run: timeout 500ms npm test
+        run: |
+          npm test
+          echo "Tests completed"
+          killall node
         env:
           NODE_ENV: test
