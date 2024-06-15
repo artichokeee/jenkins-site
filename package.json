@@ -2,7 +2,7 @@
   "name": "testing-website",
   "version": "1.0.0",
   "description": "A simple website to learn testing",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "mocha tests/test.js",
     "build": "echo 'Building the website...' && mkdir -p dist && cp -r * dist/ && rm -rf dist/node_modules dist/tests dist/package.json dist/package-lock.json"
