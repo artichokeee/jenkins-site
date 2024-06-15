@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/test.js",
-    "build": "echo 'Building the website...' && mkdir -p dist && cp -r * dist/ && rm -rf dist/node_modules dist/tests dist/package.json dist/package-lock.json"
+    "build": "echo 'Building the website...' && mkdir -p dist && rsync -av --progress --exclude dist --exclude node_modules --exclude tests --exclude package.json --exclude package-lock.json ./ dist/"
   },
   "author": "",
   "license": "ISC",
