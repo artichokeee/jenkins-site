@@ -27,11 +27,12 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Run Tests
+        run: npm test
+
       - name: Deploy to GitHub Pages
+        if: success()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           publish_dir: ./dist
-
-      - name: Run Tests
-        run: npm test
