@@ -4,8 +4,8 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
 describe("Website", function () {
+  this.timeout(10000); // Увеличиваем таймаут для всех тестов в этом блоке
   let dom;
-  let server;
 
   before(function (done) {
     JSDOM.fromURL("https://artichokeee.github.io/jenkins-site/")
@@ -14,14 +14,6 @@ describe("Website", function () {
         done();
       })
       .catch(done);
-  });
-
-  after(function (done) {
-    if (server) {
-      server.close(done);
-    } else {
-      done();
-    }
   });
 
   it("should return 200", function (done) {
