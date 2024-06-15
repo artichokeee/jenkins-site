@@ -4,10 +4,13 @@ const { JSDOM } = require("jsdom");
 
 describe("Website", function () {
   it("should return 200", function (done) {
-    http.get("http://localhost:3000", function (response) {
-      assert.strictEqual(response.statusCode, 200);
-      done();
-    });
+    http.get(
+      "https://artichokeee.github.io/jenkins-site/",
+      function (response) {
+        assert.strictEqual(response.statusCode, 200);
+        done();
+      }
+    );
   });
 });
 
@@ -15,17 +18,20 @@ describe("HTML Content", function () {
   let document;
 
   before(function (done) {
-    http.get("http://localhost:3000", function (response) {
-      let data = "";
-      response.on("data", (chunk) => {
-        data += chunk;
-      });
-      response.on("end", () => {
-        const dom = new JSDOM(data);
-        document = dom.window.document;
-        done();
-      });
-    });
+    http.get(
+      "https://artichokeee.github.io/jenkins-site/",
+      function (response) {
+        let data = "";
+        response.on("data", (chunk) => {
+          data += chunk;
+        });
+        response.on("end", () => {
+          const dom = new JSDOM(data);
+          document = dom.window.document;
+          done();
+        });
+      }
+    );
   });
 
   it("should have the correct title", function () {
