@@ -38,37 +38,36 @@ describe("HTML Content", function () {
   it("should have the correct title", function () {
     assert.strictEqual(
       document.querySelector("title").textContent,
-      "Тестирование: С чего начать"
+      "Как начать тестирование"
     );
   });
 
   it("should have a header with correct text", function () {
     assert.strictEqual(
-      document.querySelector("header h1").textContent,
-      "Тестирование: С чего начать"
+      document.querySelector("h1").textContent,
+      "Как начать тестирование"
     );
   });
 
-  it("should have three sections", function () {
-    assert.strictEqual(document.querySelectorAll("main section").length, 3);
+  it("should have a list with four items", function () {
+    const listItems = document.querySelectorAll("ul li");
+    assert.strictEqual(listItems.length, 4);
   });
 
-  it("should have a footer with copyright text", function () {
+  it("list should contain correct items", function () {
+    const listItems = document.querySelectorAll("ul li");
+    assert.strictEqual(listItems[0].textContent, "Изучить основы тестирования");
     assert.strictEqual(
-      document.querySelector("footer p").textContent,
-      "© 2024 Тестировщик с большим сердцем"
+      listItems[1].textContent,
+      "Практиковаться на реальных проектах"
     );
-  });
-
-  it("should have an unordered list in the third section", function () {
-    const list = document.querySelector("main section:nth-of-type(3) ul");
-    assert.ok(list);
-  });
-
-  it("should have three list items in the unordered list", function () {
-    const listItems = document.querySelectorAll(
-      "main section:nth-of-type(3) ul li"
+    assert.strictEqual(
+      listItems[2].textContent,
+      "Изучить инструменты автоматизации"
     );
-    assert.strictEqual(listItems.length, 3);
+    assert.strictEqual(
+      listItems[3].textContent,
+      "Подготовиться к сертификации"
+    );
   });
 });
