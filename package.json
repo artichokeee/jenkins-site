@@ -6,7 +6,7 @@
   "scripts": {
     "build": "echo 'Building the website...'",
     "test": "mocha tests/test.js",
-    "start": "http-server -p 8081"
+    "start": "http-server -p 8082"
   },
   "author": "",
   "license": "ISC",

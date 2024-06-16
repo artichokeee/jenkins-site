@@ -6,7 +6,7 @@ const { JSDOM } = jsdom;
 describe("Website", function () {
   it("should return 200", function (done) {
     http
-      .get("http://localhost:8081", function (response) {
+      .get("http://localhost:8082", function (response) {
         assert.equal(response.statusCode, 200);
         done();
       })
@@ -21,7 +21,7 @@ describe("HTML Content", function () {
 
   before(function (done) {
     http
-      .get("http://localhost:8081", function (response) {
+      .get("http://localhost:8082", function (response) {
         let data = "";
         response.on("data", (chunk) => (data += chunk));
         response.on("end", () => {
