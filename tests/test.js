@@ -4,7 +4,7 @@ const { JSDOM } = require("jsdom");
 
 describe("Website", function () {
   it("should return 200", function (done) {
-    http.get("http://localhost:3000", function (response) {
+    http.get("http://localhost:8081", function (response) {
       assert.strictEqual(response.statusCode, 200);
       done();
     });
@@ -15,7 +15,7 @@ describe("HTML Content", function () {
   let document;
 
   before(function (done) {
-    http.get("http://localhost:3000", function (response) {
+    http.get("http://localhost:8081", function (response) {
       let data = "";
       response.on("data", (chunk) => {
         data += chunk;
