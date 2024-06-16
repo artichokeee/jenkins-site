@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'cp -r ./dist /Users/rusau/Documents/jenkins-site'
+                sh 'cp -r ./dist /Documents/jenkins-deploy'
             }
         }
                 stage('Run Tests') {
