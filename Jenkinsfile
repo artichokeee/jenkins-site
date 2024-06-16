@@ -1,29 +1,73 @@
 pipeline {
     agent any
+
+    environment {
+        NODE_PATH = "/Users/rusau/.nvm/versions/node/v16.14.2/bin"
+        PATH = "${env.NODE_PATH}:${env.PATH}"
+    }
+
     stages {
-        stage('Checkout') {
+        stage('Check Node and NPM') {
             steps {
-                git 'https://github.com/artichokeee/jenkins-site.git'
+                script {
+                    echo "Node version:"
+                    sh 'node -v'
+                    echo "NPM version:"
+                    sh 'npm -v'
+                }
             }
         }
-        stage('Install Dependencies') {
+
+        stage('Prepare Workspace') {
             steps {
-                sh 'npm install'
+                dir('/Users/rusau/.jenkins/workspace/landing-page') {
+                    script {
+                        // Установите зависимости
+                        sh 'npm install'
+
+                        // Соберите проект
+                        sh 'npm run build'
+                    }
+                }
             }
         }
-        stage('Build') {
+
+        stage('Start Server') {
             steps {
-                sh 'npm run build'
+                dir('/Users/rusau/.jenkins/workspace/landing-page') {
+                    script {
+                        // Запустите новый сервер в фоновом режиме на порту 8082
+                        sh 'npm start &'
+                        
+                        // Сохраните PID нового сервера, чтобы можно было остановить его после тестов
+                        script {
+                            env.NEW_SERVER_PID = sh(script: "echo \$!", returnStdout: true).trim()
+                        }
+
+                        // Дайте серверу время на запуск
+                        sleep 5
+                    }
+                }
             }
         }
-        stage('Deploy') {
+
+        stage('Run Tests') {
             steps {
-                sh 'cp -r ./dist /Users/rusau/Documents/jenkins-site'
+                dir('/Users/rusau/.jenkins/workspace/landing-page') {
+                    script {
+                        // Запустите тесты
+                        sh 'npm test'
+                    }
+                }
             }
         }
-                stage('Run Tests') {
-            steps {
-                sh 'npm test'
+    }
+
+    post {
+        always {
+            script {
+                // Остановите новый сервер
+                sh "kill ${env.NEW_SERVER_PID}"
             }
         }
     }
