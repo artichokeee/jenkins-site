@@ -37,11 +37,11 @@ pipeline {
                 dir('/Users/rusau/.jenkins/workspace/landing-page') {
                     script {
                         // Запустите новый сервер в фоновом режиме на порту 8082
-                        sh 'npm start &'
+                        sh 'npm start & echo $! > .pid'
                         
                         // Сохраните PID нового сервера, чтобы можно было остановить его после тестов
                         script {
-                            env.NEW_SERVER_PID = sh(script: "echo \$!", returnStdout: true).trim()
+                            env.NEW_SERVER_PID = sh(script: "cat .pid", returnStdout: true).trim()
                         }
 
                         // Дайте серверу время на запуск
