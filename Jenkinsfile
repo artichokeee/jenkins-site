@@ -7,16 +7,6 @@ pipeline {
     }
 
     stages {
-        stage('Check Node and NPM') {
-            steps {
-                script {
-                    echo "Node version:"
-                    sh 'node -v'
-                    echo "NPM version:"
-                    sh 'npm -v'
-                }
-            }
-        }
 
         stage('Prepare Workspace') {
             steps {
