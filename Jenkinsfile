@@ -11,11 +11,6 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Run Tests') {
-            steps {
-                sh 'npm test'
-            }
-        }
         stage('Build') {
             steps {
                 sh 'npm run build'
@@ -24,6 +19,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'cp -r ./dist /Documents/jenkins-deploy'
+            }
+        }
+                stage('Run Tests') {
+            steps {
+                sh 'npm test'
             }
         }
     }
