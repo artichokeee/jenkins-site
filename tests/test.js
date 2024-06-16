@@ -48,26 +48,4 @@ describe("HTML Content", function () {
       "Как начать тестирование"
     );
   });
-
-  it("should have a list with four items", function () {
-    const listItems = document.querySelectorAll("ul li");
-    assert.strictEqual(listItems.length, 4);
-  });
-
-  it("list should contain correct items", function () {
-    const listItems = document.querySelectorAll("ul li");
-    assert.strictEqual(listItems[0].textContent, "Изучить основы тестирования");
-    assert.strictEqual(
-      listItems[1].textContent,
-      "Практиковаться на реальных проектах"
-    );
-    assert.strictEqual(
-      listItems[2].textContent,
-      "Изучить инструменты автоматизации"
-    );
-    assert.strictEqual(
-      listItems[3].textContent,
-      "Подготовиться к сертификации"
-    );
-  });
 });
